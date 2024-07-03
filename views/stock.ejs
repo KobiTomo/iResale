@@ -1,0 +1,95 @@
+<%- include("partials/header.ejs") %>
+<body>
+  
+<!--Navbar-->
+<%- include("partials/navbar.ejs") %>
+
+<!--Sell container-->
+<div class="container c1">
+  <div class="sell-title"><h3><i class="bi bi-copy"></i> ניהול מלאי</h3></div>
+  <form id="newPost" method="post" action="/stock-form">
+    <h5 class="h5"><i class="bi bi-ui-checks-grid"></i> עדכן את מלאי המכשירים</h5>
+    <!--Model-->
+    <div>
+      <label for="model">דגם:</label>
+      <select class="form-select" id="model" name="model">
+            <option>iPhone X</option>
+            <option>iPhone XR</option>
+            <option>iPhone XS</option>
+            <option>iPhone XS MAX</option>
+            <option>iPhone 11</option>
+            <option>iPhone 11 Pro</option>
+            <option>iPhone 11 Pro Max</option>
+            <option>iPhone 12</option>
+            <option>iPhone 12 mini</option>
+            <option>iPhone 12 Pro</option>
+            <option>iPhone 12 Pro Max</option>
+            <option>iPhone 13</option>
+            <option>iPhone 13 mini</option>
+            <option>iPhone 13 Pro</option>
+            <option>iPhone 13 Pro Max</option>
+            <option>iPhone 14</option>
+            <option>iPhone 14 Plus</option>
+            <option>iPhone 14 Pro</option>
+            <option>iPhone 14 Pro Max</option>
+      </select>
+    </div>
+    <!--Memory-->
+    <div>
+      <label for="memory">זיכרון:</label>
+      <select class="form-select" id="memory" name="memory">
+            <option>64GB</option>
+            <option>128GB</option>
+            <option>256GB</option>
+            <option>512GB</option>
+            <option>1000GB</option>
+      </select>
+    </div>
+
+    <!-- Color -->
+    <div>
+      <label for="color">צבע:</label>
+      <select class="form-select" id="color" name="color">
+        <option value="silver">כסף</option>
+        <option value="space-grey">אפור-חלל</option>
+        <option value="coral">קורל</option>
+        <option value="yellow">צהוב</option>
+        <option value="blue">כחול</option>
+        <option value="white">לבן</option>
+        <option value="red">אדום</option>
+        <option value="black">שחור</option>
+        <option value="gold">זהב</option>
+        <option value="purple">סגול</option>
+        <option value="green">ירוק</option>
+        <option value="midnight-green">ירוק-חצות</option>
+        <option value="graphite">אפור</option>
+        <option value="pacific-blue">כחול-פסיפיק</option>
+        <option value="starlight">אור-כוכבים</option>
+        <option value="midnight">חצות</option>
+        <option value="pink">ורוד</option>
+        <option value="sierra-blue">כחול-סיארה</option>
+        <option value="alpine-green">ירוק-אלפיני</option>
+        <option value="space-black">שחור-חלל</option>
+        <option value="deep-purple">סגול-עמוק</option>
+      </select>
+    </div>
+
+    <!--Price-->
+    <div>
+      <label for="stock">כמות:</label>
+      <input class="form-control" id="stock" name="stock">
+    </div>
+
+    <!--Submit Button-->
+    <div class="form-buttons">
+      <button type="submit" class="btn btn-primary sell-btn">עדכן כמות</button>
+      <button type="reset" class="btn btn-secondary sell-btn">איפוס</button>
+    </div>
+  </form>
+
+</div>
+
+
+  <%- include("partials/footer.ejs") %>
+</body>
+</html>

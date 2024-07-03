@@ -1,0 +1,265 @@
+<%- include("partials/header.ejs") %>
+<body>
+  
+<!--Navbar-->
+<%- include("partials/navbar.ejs") %>
+
+<!--Sell container-->
+<div class="container c1">
+
+<div class="sell-title"><h3><i class="bi bi-plus-circle-dotted"></i> פרסום מודעה חדשה</h3></div>
+
+<% if (locals.posts) { %>
+
+<% posts.forEach(post => {%>
+  
+  <!--Sell Form Update--> 
+  <form id="updatePost" method="post" action="/form/<%= post.id %>">
+    <h5 class="h5"><i class="bi bi-person-circle"></i> פרטי התקשרות</h5>
+    <!--Name-->
+    <div>
+      <label for="name">*שם מלא:</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="שם" value="<%= post.name %>" required>
+    </div>
+    <!--City-->
+    <div>
+      <label for="city">*עיר:</label>
+      <input type="text" class="form-control" id="city" name="city" placeholder="עיר מגורים" value="<%= post.city %>" required>
+    </div>
+    <!--Number-->
+    <div>
+      <label for="number">*טלפון:</label>
+      <input type="tel" class="form-control" id="number" name="number" placeholder="מספר ליצירת קשר" value="<%= post.number %>" required>
+    </div>
+    <!--Title "Select Model"-->
+    <h5 class="h5"><i class="bi bi-phone"></i> בחר דגם</h5> <p class="model-error"><%= locals.message %></p>
+    <!--Model-->
+    <div>
+      <label for="model">דגם:</label>
+      <select class="form-select" id="model" name="model">
+            <option>iPhone X</option>
+            <option>iPhone XR</option>
+            <option>iPhone XS</option>
+            <option>iPhone XS MAX</option>
+            <option>iPhone 11</option>
+            <option>iPhone 11 Pro</option>
+            <option>iPhone 11 Pro Max</option>
+            <option>iPhone 12</option>
+            <option>iPhone 12 mini</option>
+            <option>iPhone 12 Pro</option>
+            <option>iPhone 12 Pro Max</option>
+            <option>iPhone 13</option>
+            <option>iPhone 13 mini</option>
+            <option>iPhone 13 Pro</option>
+            <option>iPhone 13 Pro Max</option>
+            <option>iPhone 14</option>
+            <option>iPhone 14 Plus</option>
+            <option>iPhone 14 Pro</option>
+            <option>iPhone 14 Pro Max</option>
+      </select>
+    </div>
+    <!--Memory-->
+    <div>
+      <label for="memory">זיכרון:</label>
+      <select class="form-select" id="memory" name="memory">
+            <option>64GB</option>
+            <option>128GB</option>
+            <option>256GB</option>
+            <option>512GB</option>
+            <option>1000GB</option>
+      </select>
+    </div>
+    <!-- Color -->
+    <div>
+      <label for="color">צבע:</label>
+      <select class="form-select" id="color" name="color">
+        <option value="silver">כסף</option>
+        <option value="space-grey">אפור-חלל</option>
+        <option value="coral">קורל</option>
+        <option value="yellow">צהוב</option>
+        <option value="blue">כחול</option>
+        <option value="white">לבן</option>
+        <option value="red">אדום</option>
+        <option value="black">שחור</option>
+        <option value="gold">זהב</option>
+        <option value="purple">סגול</option>
+        <option value="green">ירוק</option>
+        <option value="midnight-green">ירוק-חצות</option>
+        <option value="graphite">אפור</option>
+        <option value="pacific-blue">כחול-פסיפיק</option>
+        <option value="starlight">אור-כוכבים</option>
+        <option value="midnight">חצות</option>
+        <option value="pink">ורוד</option>
+        <option value="sierra-blue">כחול-סיארה</option>
+        <option value="alpine-green">ירוק-אלפיני</option>
+        <option value="space-black">שחור-חלל</option>
+        <option value="deep-purple">סגול-עמוק</option>
+      </select>
+    </div>
+    <!--Condition-->
+    <div class="sell-item">
+      <h5 class="h5"><i class="bi bi-check-square"></i> הכל עובד תקין?</h5>
+        <i class="bi bi-check-all"></i>המסך עובד ונדלק במלואו<br>
+        <i class="bi bi-check-all"></i>מסך וגב ללא שברים או סדקים<br>
+        <i class="bi bi-check-all"></i>כל הכפתורים החיצוניים<br>
+        <i class="bi bi-check-all"></i>מצלמה קדמית/אחורית ופלאשים<br>
+        <i class="bi bi-check-all"></i>רמקולים ומיקרופונים<br>
+        <i class="bi bi-check-all"></i>שקע אוזניות ויציאת טעינה<br>
+        <i class="bi bi-check-all"></i>סלולר, Wi-Fi, בלוטות' ו-GPS<br>
+        <i class="bi bi-check-all"></i>מסך מגע ופקודות קוליות<br>
+        <i class="bi bi-check-all"></i>זיהוי פנים, הסוללה מספיקה<br>
+        <i class="bi bi-check-all"></i>המכשיר יכול להחזיק טעינה<br>
+        <select class="form-select yes-no" name="condition">
+          <option value="כן" <% if (post.condition === 'כן') { %>selected<% } %>>כן</option>
+          <option value="לא" <% if (post.condition === 'לא') { %>selected<% } %>>לא</option>
+      </select>      
+    </div>
+    <!-- Detail -->
+    <div>
+      <label for="detail">*פרטים נוספים:</label>
+      <textarea class="form-control" id="detail" name="detail" required maxlength="45" oninput="updateCharacterCount(this)"><%= post.detail %></textarea>
+      <p id="charCount"></p>
+    </div>
+    <!--Price-->
+    <div>
+      <label for="price">*מחיר:</label>
+      <input class="form-control" id="price" name="price" placeholder="<%= post.price %>" value="<%= post.price %>" required>
+    </div>
+    
+   
+    <% }) %>
+    <!--Submit Button-->
+    <div class="form-buttons">
+      <button type="submit" class="btn btn-primary sell-btn">פרסם</button>
+      <button type="reset" class="btn btn-secondary sell-btn">איפוס</button>
+    </div>
+   
+  </form>
+  <% } else { %>
+  <!--Sell From Clean--> 
+  <form id="newPost" method="post" action="/form">
+    <h5 class="h5"><i class="bi bi-person-circle"></i> פרטי התקשרות</h5>
+    <!--Name-->
+    <div>
+      <label for="name">*שם מלא:</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="שם" value="<%= locals.name %>" required>
+    </div>
+    <!--City-->
+    <div>
+      <label for="city">*עיר:</label>
+      <input type="text" class="form-control" id="city" name="city" placeholder="עיר מגורים" value="<%= locals.city %>" required>
+    </div>
+    <!--Number-->
+    <div>
+      <label for="number">*טלפון:</label>
+      <input type="tel" class="form-control" id="number" name="number" placeholder="מספר ליצירת קשר" value="<%= locals.number %>" required>
+    </div>
+    <!--Title "Select Model"-->
+    <h5 class="h5"><i class="bi bi-phone"></i> בחר דגם</h5> <p class="model-error"><%= locals.message %></p>
+    <!--Model-->
+    <div>
+      <label for="model">דגם:</label>
+      <select class="form-select" id="model" name="model">
+            <option>iPhone X</option>
+            <option>iPhone XR</option>
+            <option>iPhone XS</option>
+            <option>iPhone XS MAX</option>
+            <option>iPhone 11</option>
+            <option>iPhone 11 Pro</option>
+            <option>iPhone 11 Pro Max</option>
+            <option>iPhone 12</option>
+            <option>iPhone 12 mini</option>
+            <option>iPhone 12 Pro</option>
+            <option>iPhone 12 Pro Max</option>
+            <option>iPhone 13</option>
+            <option>iPhone 13 mini</option>
+            <option>iPhone 13 Pro</option>
+            <option>iPhone 13 Pro Max</option>
+            <option>iPhone 14</option>
+            <option>iPhone 14 Plus</option>
+            <option>iPhone 14 Pro</option>
+            <option>iPhone 14 Pro Max</option>
+      </select>
+    </div>
+    <!--Memory-->
+    <div>
+      <label for="memory">זיכרון:</label>
+      <select class="form-select" id="memory" name="memory">
+            <option>64GB</option>
+            <option>128GB</option>
+            <option>256GB</option>
+            <option>512GB</option>
+            <option>1000GB</option>
+      </select>
+    </div>
+
+    <!-- Color -->
+    <div>
+      <label for="color">צבע:</label>
+      <select class="form-select" id="color" name="color">
+        <option value="silver">כסף</option>
+        <option value="space-grey">אפור-חלל</option>
+        <option value="coral">קורל</option>
+        <option value="yellow">צהוב</option>
+        <option value="blue">כחול</option>
+        <option value="white">לבן</option>
+        <option value="red">אדום</option>
+        <option value="black">שחור</option>
+        <option value="gold">זהב</option>
+        <option value="purple">סגול</option>
+        <option value="green">ירוק</option>
+        <option value="midnight-green">ירוק-חצות</option>
+        <option value="graphite">אפור</option>
+        <option value="pacific-blue">כחול-פסיפיק</option>
+        <option value="starlight">אור-כוכבים</option>
+        <option value="midnight">חצות</option>
+        <option value="pink">ורוד</option>
+        <option value="sierra-blue">כחול-סיארה</option>
+        <option value="alpine-green">ירוק-אלפיני</option>
+        <option value="space-black">שחור-חלל</option>
+        <option value="deep-purple">סגול-עמוק</option>
+      </select>
+    </div>
+
+    <!--Condition-->
+    <div class="sell-item">
+      <h5 class="h5"><i class="bi bi-check-square"></i> הכל עובד תקין?</h5>
+        <i class="bi bi-check-all"></i>המסך עובד ונדלק במלואו<br>
+        <i class="bi bi-check-all"></i>מסך וגב ללא שברים או סדקים<br>
+        <i class="bi bi-check-all"></i>כל הכפתורים החיצוניים<br>
+        <i class="bi bi-check-all"></i>מצלמה קדמית/אחורית ופלאשים<br>
+        <i class="bi bi-check-all"></i>רמקולים ומיקרופונים<br>
+        <i class="bi bi-check-all"></i>שקע אוזניות ויציאת טעינה<br>
+        <i class="bi bi-check-all"></i>סלולר, Wi-Fi, בלוטות' ו-GPS<br>
+        <i class="bi bi-check-all"></i>מסך מגע ופקודות קוליות<br>
+        <i class="bi bi-check-all"></i>זיהוי פנים, הסוללה מספיקה<br>
+        <i class="bi bi-check-all"></i>המכשיר יכול להחזיק טעינה<br>
+        <select class="form-select yes-no" name="condition">
+          <option value="כן" selected>כן</option>
+          <option value="לא">לא</option>
+        </select>
+    </div>
+    <!-- Detail -->
+    <div>
+      <label for="detail">*פרטים נוספים:</label>
+      <textarea class="form-control" id="detail" name="detail" required maxlength="45" oninput="updateCharacterCount(this)"></textarea>
+      <p id="charCount"></p>
+    </div>
+    <!--Price-->
+    <div>
+      <label for="price">*מחיר:</label>
+      <input class="form-control" id="price" name="price" value="<%= locals.price %>" required>
+    </div>
+    <!--Submit Button-->
+    <div class="form-buttons">
+      <button type="submit" class="btn btn-primary sell-btn">פרסם</button>
+      <button type="reset" class="btn btn-secondary sell-btn">איפוס</button>
+    </div>
+  </form>
+  <% } %>
+</div>
+
+
+  <%- include("partials/footer.ejs") %>
+</body>
+</html>

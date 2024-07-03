@@ -1,0 +1,99 @@
+<%- include("partials/header.ejs") %>
+<body>
+  
+<!--Navbar-->
+<%- include("partials/navbar.ejs") %>
+
+<!--Products grid-->
+<div class="album py-5 bg-body-tertiary">
+  <div class="store-title"><h3><i class="bi bi-copy"></i> לוח אייפונים משומשים</h3></div>
+    <div class="container">
+    <!-- Start of the rows for device models -->
+    <div class="row g-3">
+    <!-- Loop through each model in the 'device' array using forEach -->
+    <% posts.forEach(post => { %>
+      <div class="col col-devices">
+        <div class="card shadow-sm">
+        <div class="deledit">
+          <!-- Placeholder for additional content -->
+          <span class="badge used">לוח מודעות | מוצר משומש</span>
+          <!-- Edit Button -->
+          <a href="/sell/<%= post.id %>" class="btn btn-sm edit">
+            <i class="bi bi-pencil-square"></i> <!-- Use an appropriate icon for editing -->
+          </a>
+          <!-- Delete Button -->
+          <a href="/board/delete/<%= post.id %>" class="btn btn-sm delete">
+            <i class="bi bi-trash"></i> <!-- Use an appropriate icon for deletion -->
+          </a>
+        </div>
+        <!-- First image -->
+        <img class="grid-image" src="<%= post.image_2 %>" alt="Image 1">
+        <!-- Card body -->
+          <div class="card-body">
+            <div class="d-flex">
+              
+              <!-- Name\Number -->
+              <div class="dropdown">
+                <button class="btn btn-sm three-buttons inventory" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-person-square"></i> <%= post.name  %>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="tel:+972<%= post.number %>"><i class="bi bi-telephone-outbound-fill"></i> חייג</a></li>
+                  <li><a class="dropdown-item" href="https://wa.me/+972<%= post.number %>"><i class="bi bi-whatsapp"></i></i> WhatSapp</a></li>
+                </ul>
+              </div>
+
+              <!-- Memory\Detail -->
+              <div class="dropdown">
+                <button class="btn btn-sm three-buttons shipping" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-box2-fill"></i> <%= post.memory  %>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      <div>דגם: <%= post.model %></div>
+                      <div>זיכרון: <%= post.memory %></div>
+                      <div>צבע: <%= post.color %></div>
+                      <div>הכל עובד תקין? <%=post.condition%> </div>
+                      <div>פרטים נוספים: <%= post.detail %></div>
+                      <div>פורסם ב: <%= post.time.split('T')[0] %></div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- City\Navigate -->
+              <div class="dropdown">
+                <button class="btn btn-sm three-buttons pickup" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-geo-alt-fill"></i> <%= post.city %>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="https://www.waze.com/ul?q=<%= post.city %>" target="_blank">Waze</a></li>
+                  <li><a class="dropdown-item" href="https://www.google.com/maps/search/<%= encodeURIComponent(post.city) %>" target="_blank">Google Maps</a></li>
+                </ul>
+              </div>
+
+
+            </div>
+          <!-- Model name displayed as card text -->
+          <p class="card-text">
+          <!-- Badge indicating a refurbished product -->
+          <span class="badge text-bg-dark"><%= post.model %></span>
+          <!-- Badge displaying the lowest price of the model -->
+          <span class="badge text-bg-price"><%= post.price %></span>
+          </p>
+          </div>
+        </div>
+      </div>
+    <!-- End of forEach loop -->
+    <% }); %>
+      
+    </div>
+  </div>
+</div>
+
+
+<!--Footer-->
+<%- include("partials/footer.ejs") %>
+</body>
+</html>

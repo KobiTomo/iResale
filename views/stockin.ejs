@@ -1,0 +1,50 @@
+<%- include("partials/header.ejs") %>
+<body>
+  
+<!--Navbar-->
+<%- include("partials/navbar.ejs") %>
+
+
+<div class="container">
+  <!-- Products grid -->
+  <section class="album py-5 bg-body-tertiary">
+    <div class="store-title"><h3><i class="bi bi-stack"></i> מלאי מכשירים מחודשים</h3></div>
+    <div class="row g-3">
+      <!-- Loop through each model in the 'device' array using forEach -->
+      <% model.forEach(model => { %>
+        <div class="col col-devices">
+          <div class="card shadow-sm">
+            <!-- Placeholder for additional content -->
+            <span class="badge used"> מלאי מחודשים</span>
+            <!-- First image -->
+            <img class="grid-image" src="<%= model.image_1 %>" alt="<%= model.model_name %> Image">
+            <!-- Card body -->
+            <div class="card-body">
+              <div>
+                <button type="button" class="btn btn-sm three-buttons inventory">
+                   כמות מלאי: <%= model.stock %>
+                </button>
+                <button type="button" class="btn btn-sm three-buttons shipping">
+                   זיכרון: <%= model.memory_size %>
+                </button>
+                <button type="button" class="btn btn-sm three-buttons pickup">
+                   צבע: <%= model.color_he %>
+                </button>
+              </div>
+              <!-- Model name displayed as card text -->
+              <p class="card-text">
+                <!-- Badge indicating a refurbished product -->
+                <span class="badge text-bg-dark"><%= model.model_name %></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </section>
+</div>
+
+
+  <%- include("partials/footer.ejs") %>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<%- include("partials/header.ejs") %>
+<body>
+  
+<!--Navbar-->
+<%- include("partials/navbar.ejs") %>
+
+
+
+<!-- Products grid -->
+<div class="album py-5 bg-body-tertiary">
+  <div class="store-title"><h3><i class="bi bi-shop-window"></i> חנות מחודשים</h3></div>
+  <div class="container">
+    <!-- Start of rows for device models -->
+    <div class="row g-3">
+      <!-- Loop through each model in the 'device' array using forEach -->
+      <% device.forEach(model => { %>
+        <div class="col col-devices">
+          <div class="card shadow-sm">
+            <!-- Placeholder for additional content -->
+            <span class="badge used">מוצר מחודש</span>
+            <!-- First image -->
+            <img class="grid-image" src="<%= model.image_1 %>" alt="Image 1">
+            <!-- Card body -->
+            <div class="card-body">
+              <div class="d-flex">
+                <a type="button" class="btn btn-sm three-buttons inventory" href="/stockin">
+                  <i class="bi bi-ui-checks-grid"></i> מלאי
+                </a>
+                <button type="button" class="btn btn-sm three-buttons shipping" data-bs-toggle="modal" data-bs-target="#shipping">
+                  <i class="bi bi-box2-fill"></i> משלוח
+                </button>
+                <button type="button" class="btn btn-sm three-buttons pickup" data-bs-toggle="modal" data-bs-target="#pickup">
+                  <i class="bi bi-geo-alt-fill"></i> איסוף
+                </button>
+              </div>
+              <!-- Model name displayed as card text -->
+              <p class="card-text">
+                <!-- Badge indicating a refurbished product -->
+                <span class="badge text-bg-dark"><%= model.model_name %></span>
+                <!-- Badge displaying the lowest price of the model -->
+                <span class="badge text-bg-price"><%= model.lowest_price %></span>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+    <!-- End of forEach loop -->
+  </div>
+</div>
+
+
+<!-- Modal for shiping information-->
+<div class="modal fade" id="shipping" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">משלוחים</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-text">משלוחים בעלות 120 ש"ח באזורים: הרצליה, רמת השרון, רעננה, כפר-סבא, הוד השרון, תל-אביב, רשפון, שפעים, געש, כפר שמריהו, אנו לא שולחים לערים אחרות, ניתן לבצע איסוף עצמי או שליח מטעם הלקוח</p>
+      </div>
+      <div class="modal-footer">
+        <a href="https://wa.me/+972525588552" target="_blank">
+          <button type="button" class="btn btn-success"><i class="bi bi-whatsapp"></i> צור קשר</button>
+        </a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">סגור</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for pickup information-->
+<div class="modal fade" id="pickup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="bi bi-geo"></i> איסוף עצמי</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3377.368855057399!2d34.84250000000001!3d32.1673268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d480b658f7d3d%3A0x328beb2cb88eb283!2z16HXlden15XXnNeV15EgMzUsINeU16jXptec15nXlA!5e0!3m2!1siw!2sil!4v1718799201865!5m2!1siw!2sil" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">סגור</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Footer-->
+<%- include("partials/footer.ejs") %>
+</body>
+</html>

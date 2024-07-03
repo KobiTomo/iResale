@@ -1,0 +1,185 @@
+/* Global Styles */
+body {
+  background-color: #f5f5f7; /* Light gray background */
+}
+
+/* Buy Page */
+.grid-image {
+  width: 250px; /* Consistent image width */
+  align-self: center;
+}
+
+.text-bg-dark {
+  font-size: 14px;
+  width: 100%; /* Use '100%' instead of '-webkit-fill-available' */
+  font-weight: 500;
+}
+
+.card-body {
+  text-align: center; /* Center content within cards */
+}
+
+.col-devices {
+  max-width: 268px; /* Fixed width for device cards */
+}
+
+div.row.g-3 {
+  justify-content: center; /* Center cards horizontally */
+}
+
+.used {
+  color: black; /* Removed '!important' */
+  float: right;
+}
+
+.text-bg-price {
+  color: #000;
+  font-size: 14px; /* Price text styling */
+}
+
+/* Buttons */
+.three-buttons {
+  width: 100%; /* Use '100%' instead of '-webkit-fill-available' */
+}
+
+.inventory {
+  background-color: papayawhip; /* Inventory button color */
+  font-weight: bold;
+}
+
+.shipping {
+  background-color: lavenderblush; /* Shipping button color */
+}
+
+.pickup {
+  background-color: mintcream; /* Pickup button color */
+}
+
+.btn-sm {
+  font-size: x-small; /* Smaller button font size */
+}
+
+/* Navigation Bar */
+.container-fluid {
+  width: auto; /* Adjust navigation bar width */
+}
+
+.bg-light {
+  background-color: #ffde92 !important;
+}
+
+/* Modals */
+.modal {
+  --bs-modal-width: 52%; /* Set modal width */
+}
+
+.modal-body {
+  clip-path: content-box; /* Prevent overflow */
+}
+
+iframe {
+  width: 100%; /* Make iframes fill available width */
+}
+
+.modal-text {
+  font-size: small;
+}
+
+/* Sell Page */
+.sell-item {
+  margin: 2% 0; /* Combined margin-top and margin-bottom */
+  font-size: small;
+}
+
+.bi-check-all {
+  color:limegreen;;
+}
+
+.card-text.model {
+  font-size: x-small; /* Model text size */
+  text-align: center;
+}
+
+div.row.r1 {
+  justify-content: center; /* Center row content */
+}
+
+.c1 {
+  width: 80%; /* Adjust maximum width */
+  min-width: 40%; /* Adjust minimum width */
+}
+
+.h5 {
+  margin-top: 6%; /* Heading margin */
+}
+
+.form-control {
+  font-size: small; /* Form control font size */
+  direction: rtl; /* Right-to-left direction */
+}
+
+.form-select.yes-no {
+  font-size: small; /* Dropdown font size */
+  margin-top: 10px;
+}
+
+.deledit {
+  margin-left: 6px; /* Adjust margin for delete/edit buttons */
+  text-align: left;
+}
+
+.delete {
+  font-size: large;
+  padding-left: -0.5rem; /* Adjust delete button padding */
+}
+
+.edit {
+  font-size: larger;
+  padding-left: -0.5rem; /* Adjust edit button padding */
+}
+
+.form-buttons {
+  margin: 40px 0 20px 0;
+}
+
+/* Sell Page Error */
+.model-error {
+  color: red;
+  font-size: small; /* Error message styling */
+}
+
+/* Board buttons */
+.dropdown {
+  width: 100% !important; /* Use '100%' instead of '-webkit-fill-available' */
+}
+
+.dropdown-item {
+  font-size: small;
+}
+
+#charCount {
+  font-size: small;
+  color: lightcoral;
+}
+
+.fcc-btn {
+  color: black;
+  text-decoration: none;
+}
+
+.album {
+  text-align: center;
+}
+
+
+
+
+/* Titles */
+.store-title{
+  margin-bottom: 26px;
+}
+
+.sell-title {
+  margin-top: 50px;
+  text-align-last: center;
+}
